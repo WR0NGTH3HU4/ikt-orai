@@ -27,7 +27,10 @@ def terfogat():
             hanyszazalekmezo.insert(0, str(szazalek)+' %')
             ennyiliteresmezo.delete(0, END)
             ennyiliteresmezo.insert(0, str(terfogat - b)+' l')
-            
+        
+         else:
+            belefermezo.delete(0, END)
+            belefermezo.insert(0,str() +'nem fér bele')
     else :
         ennyiliteresmezo.delete(0, END)
         ennyiliteresmezo.insert(0, str()+' nem lehet ')
