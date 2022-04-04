@@ -25,6 +25,8 @@ def terfogat():
             belefermezo.insert(0,str() +'igen')
             hanyszazalekmezo.delete(0, END)
             hanyszazalekmezo.insert(0, str(szazalek)+' %')
+            ennyiliteresmezo.delete(0, END)
+            ennyiliteresmezo.insert(0, str(terfogat - b)+' l')
             
     else :
         ennyiliteresmezo.delete(0, END)
