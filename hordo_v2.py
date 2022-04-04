@@ -15,12 +15,12 @@ def terfogat():
     if r>0 and m>0 and b>0:
         terfogat = round (math.pi * r * r * m /1000 ,2)
         ennyiliteresmezo.delete(0, END)
-        ennyiliteresmezo.insert(0, str(terfogat)+' dm3')
+        ennyiliteresmezo.insert(0, str(terfogat)+' l')
         szazalek= round(b*(100/terfogat), 2)
 
         if b<= terfogat and b>0 and terfogat>0 :
             mennyihelymezo.delete(0, END)
-            mennyihelymezo.insert(0, str(terfogat)+' dm3')
+            mennyihelymezo.insert(0, str(terfogat)+' l')
             belefermezo.delete(0, END)
             belefermezo.insert(0,str() +'igen')
             hanyszazalekmezo.delete(0, END)
