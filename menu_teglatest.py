@@ -3,22 +3,34 @@ from tkinter import *
 #Névjegy ablak
 def nevjegy():
     abl2 = Toplevel(foablak)
-    uz2 = Message(abl2, text = 'Készítette: Gipsz Jakab\nPiripócs\n2009.06.041', width = 300)
+    uz2 = Message(abl2, text = 'Készítette: Kulimák Máté\nBaja\n2022.04.06', width = 300)
     gomb2 = Button(abl2, text = 'Kilép', command = abl2.destroy)
     uz2.pack()
     gomb2.pack()
-    abl2.pack()
 #Névjegy ablak vége
 
 #Felszín ablak
+
 def felszin():
+    s = ' '
     def szamit():
-        a = eval(mezo1.get())
-        b = eval(mezo2.get())
-        c = eval(mezo3.get())
+        if not s:
+
+            mezo4.delete(0, END)
+            mezo4.insert('A számításhoz számok kellenek!')
+
+        a = float(mezo1.get())
+        b = float(mezo2.get())
+        c = float(mezo3.get())
         felszin = 2*(a*b+a*c+b*c)
-        mezo4.delete(0, END)
-        mezo4.insert(0, str(felszin))
+        
+        if a < 0 or b < 0 or c <0:
+            mezo4.insert(0, str()+ 'Negatív számmal nem lehet számolni!')
+        
+        else:
+            mezo4.delete(0, END)
+            mezo4.insert(0, str(felszin))
+
 
     abl3 = Toplevel(foablak)
     abl3.title('A téglatest felszíne')
@@ -88,7 +100,7 @@ menusor = Frame(foablak)
 menusor.pack(side = TOP, fill = X)
 
 menu1 = Menubutton(menusor, text = 'Fájl', underline = 0)
-menusor.pack(side = LEFT)
+menu1.pack(side = LEFT)
 fajl = Menu(menu1)
 fajl.add_command(label = 'Névjegy', command = nevjegy, underline = 0)
 fajl.add_command(label = 'Kilépés', command = foablak.destroy, underline = 0)
