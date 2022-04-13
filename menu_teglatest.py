@@ -21,7 +21,7 @@ def felszin():
         b = eval(mezo2.get())
         c = eval(mezo3.get())
         felszin = 2*(a*b+a*c+b*c) 
-        if a < 0 or b < 0 or c <0:
+        if a <= 0 or b <= 0 or c <= 0:
             mezo4.insert(0, str()+ 'Negatív számmal nem lehet számolni!') 
         else:
             mezo4.delete(0, END)
@@ -63,11 +63,12 @@ def terfogat():
         b = eval(mezo2.get())
         c = eval(mezo3.get())
         terfogat = a*b*c
-        if a < 0 or b < 0 or c <0:
+        if a <= 0 or b <= 0 or c <= 0:
+            mezo4.delete(0, END)
             mezo4.insert(0, str()+ 'Negatív számmal nem lehet számolni!')
         else:
             mezo4.delete(0, END)
-            mezo4.insert(0, str(felszin))
+            mezo4.insert(0, str(terfogat))
 
 
     abl3 = Toplevel(foablak)
@@ -103,13 +104,13 @@ def hterfogat():
             mezo4.insert(0, str()+ 'A számításhoz számok kellenek!')
         r = eval(mezo1.get())
         m = eval(mezo2.get())
-        terfogat = round (math.pi * r * r * m, 2)
-        if r < 0 or m < 0:
+        terfogat = round(math.pi * r * r * m, 2)
+        if r <= 0 or m <= 0:
             mezo4.delete(0, END)
             mezo4.insert(0, str()+ 'Negatív számmal nem lehet számolni!') 
         else:
             mezo4.delete(0, END)
-            mezo4.insert(0, str(hterfogat))
+            mezo4.insert(0, str(terfogat))
 
 
     abl4 = Toplevel(foablak)
@@ -131,6 +132,43 @@ def hterfogat():
     mezo4.grid(row = 5, column = 2, sticky = W)
     abl4.mainloop()
 #Henger térfogat ablak vége
+
+#Henger felszín ablak
+def hfelszin():
+    s = ''
+    def szamit():
+        if not s:
+            mezo4.delete(0, END)
+            mezo4.insert(0, str()+ 'A számításhoz számok kellenek!')
+        r = eval(mezo1.get())
+        m = eval(mezo2.get())
+        felszin = 2*r*r*math.pi+2*r*math.pi*m
+        if r <= 0 or m <= 0:
+            mezo4.insert(0, str()+ 'Negatív számmal nem lehet számolni!') 
+        else:
+            mezo4.delete(0, END)
+            mezo4.insert(0, str(felszin))
+
+
+    abl4 = Toplevel(foablak)
+    abl4.title('A henger felszíne')
+    abl4.minsize(width = 300, height = 100)
+    szoveg1 = Label(abl4, text = 'r:')
+    szoveg2 = Label(abl4, text = 'm:')
+    szoveg4 = Label(abl4, text = 'Eredmény:')
+    gomb1 = Button(abl4, text = 'Számítás', command = szamit)
+    mezo1 = Entry(abl4)
+    mezo2 = Entry(abl4)
+    mezo4 = Entry(abl4)
+    szoveg1.grid(row = 1)
+    szoveg2.grid(row = 2)
+    szoveg4.grid(row = 5)
+    gomb1.grid(row = 4, column = 2, sticky = W)
+    mezo1.grid(row = 1, column = 2, sticky = W)
+    mezo2.grid(row = 2, column = 2, sticky = W)
+    mezo4.grid(row = 5, column = 2, sticky = W)
+    abl4.mainloop()
+#Henger felszín ablak vége
 
 #Főablak
 foablak = Tk()
@@ -157,7 +195,7 @@ menu2.config(menu = teglatest)
 menu3 = Menubutton(menusor, text = 'Henger', underline = 0)
 menu3.pack(side = LEFT)
 henger = Menu(menu3)
-henger.add_command(label = 'Felszín', command = felszin, underline = 0)
+henger.add_command(label = 'Felszín', command = hfelszin, underline = 0)
 henger.add_command(label = 'Térfogat', command = hterfogat, underline = 0)
 menu3.config(menu = henger)
 
